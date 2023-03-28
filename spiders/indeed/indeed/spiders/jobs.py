@@ -5,6 +5,7 @@ import scrapy
 from urllib.parse import urlencode
 from scrapy.http import Request, Response
 from indeed.utils.json_utils import JSONUtils
+from indeed.utils.url_interpreter import URLInterpreter
 
 class IndeedAdvertisementsSpider(scrapy.Spider):
 
@@ -131,7 +132,7 @@ class IndeedAdvertisementsSpider(scrapy.Spider):
 
             yield {
                 'id': job_key,
-                'url': response.url,
+                'url': URLInterpreter.parse_url(url=response.url),
                 'job_key': job_key,
                 'job_title': job_details.get('jobTitle'),
                 'job_description_html': job_details.get('sanitizedJobDescription').get('content') if job_details.get('sanitizedJobDescription') is not None else '',

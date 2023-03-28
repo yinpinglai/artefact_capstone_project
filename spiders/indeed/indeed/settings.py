@@ -24,7 +24,6 @@ ROBOTSTXT_OBEY = False
 CONCURRENT_REQUESTS = 1
 
 ## ScrapeOps API Key
-
 SCRAPEOPS_API_KEY = 'YOUR_API_KEY'
 
 ## Enable ScrapeOps Proxy
