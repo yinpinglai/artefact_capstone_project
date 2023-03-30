@@ -66,9 +66,11 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "jobsdb.pipelines.JobsdbPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "jobsdb.pipelines.JobsdbPipeline": 300,
+   "jobsdb.pipelines.RemoveDuplicateJobPipeline": 400,
+   "jobsdb.pipelines.ConvertToLowerCasePipeline": 500,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

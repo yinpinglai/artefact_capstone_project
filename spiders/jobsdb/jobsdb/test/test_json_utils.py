@@ -1,6 +1,6 @@
 import unittest
 
-from utils.json_utils import JSONUtils
+from jobsdb.utils.json_utils import JSONUtils
 
 class JSONUtilsTest(unittest.TestCase):
 
