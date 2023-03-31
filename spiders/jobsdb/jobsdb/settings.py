@@ -70,6 +70,7 @@ ITEM_PIPELINES = {
    "jobsdb.pipelines.JobsdbPipeline": 300,
    "jobsdb.pipelines.RemoveDuplicateJobPipeline": 400,
    "jobsdb.pipelines.ConvertToLowerCasePipeline": 500,
+   "jobsdb.pipelines.SaveToMongoDBPipeline": 600,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

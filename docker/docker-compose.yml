@@ -1,0 +1,14 @@
+version: '3'
+services:
+  database:
+    image: 'mongo:latest'
+    container_name: 'mongodb-container-1'
+    restart: always
+    environment:
+      - MONGO_INTIDB_DATABASE=dissertation
+      - MONGO_INITDB_ROOT_USER=root
+      - MONGO_INTIDB_ROOT_PASSWORD=P@ssw0rd
+    volumes:
+      - ./mongo-volume:/data/db
+    ports:
+      - 27017:27017

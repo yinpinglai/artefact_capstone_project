@@ -83,6 +83,7 @@ ITEM_PIPELINES = {
    "indeed.pipelines.IndeedPipeline": 300,
    "indeed.pipelines.RemoveDuplicateJobPipeline": 400,
    "indeed.pipelines.ConvertToLowerCasePipeline": 500,
+   "indeed.pipelines.SaveToMongoDBPipeline": 600,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
