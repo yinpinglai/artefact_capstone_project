@@ -82,11 +82,14 @@ class SaveToMongoDBPipeline:
                         'job_description_text': item_to_be_persisted['job_description_text'],
                         'posted_at': item_to_be_persisted['posted_at'],
                         'source': item_to_be_persisted['source'],
-                        'updated_at': item_to_be_persisted['updated_at']
+                        'updated_at': item_to_be_persisted['updated_at'],
                     }},
                     upsert=False,
                 )
             else:
+                item_to_be_persisted['has_processed_manually'] = False
+                item_to_be_persisted['has_processed_automatically'] = False
+                item_to_be_persisted['has_deleted'] = False
                 self.collection.insert_one(item_to_be_persisted)
 
         except:

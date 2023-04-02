@@ -86,6 +86,9 @@ class SaveToMongoDBPipeline:
                 )
             else:
                 self.collection.insert_one(item_to_be_persisted)
+                item_to_be_persisted['has_processed_manually'] = False
+                item_to_be_persisted['has_processed_automatically'] = False
+                item_to_be_persisted['has_deleted'] = False
 
         except:
             print("Unable to create or update a job record: {}".format(

@@ -32,9 +32,9 @@ def proceed_manually_remove_operation():
 
         if should_we_remove_it is not None and should_we_remove_it.lower() == 'y':
             print("We are trying to delete this job advertisement from database: id = {}\n".format(id))
-            has_deleted = dissertation_database.remove_job_record(id=id)
+            has_updated = dissertation_database.mark_delete(id=id, should_delete=True)
 
-            if has_deleted:
+            if has_updated:
                 print("We have deleted this job advertisement from database: id = {}\n".format(id))
                 unprocessed_job['has_deleted'] = True
             else:
@@ -42,6 +42,7 @@ def proceed_manually_remove_operation():
                 unprocessed_job['has_deleted'] = False
         else:
             print("We will keep this record in database. id = {}\n".format(id))
+            dissertation_database.mark_delete(id=id, should_delete=False)
             unprocessed_job['has_deleted'] = False
 
     # Remove irrelevant information from job advertisements

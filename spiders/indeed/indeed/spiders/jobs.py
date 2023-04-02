@@ -128,13 +128,14 @@ class IndeedAdvertisementsSpider(scrapy.Spider):
 
         if script_tag is not None:
             json_blob = json.loads(script_tag[0])
+            job_headers = json_blob["jobInfoWrapperModel"]["jobInfoModel"]["jobInfoHeaderModel"]
             job_details = json_blob["jobInfoWrapperModel"]["jobInfoModel"]
 
             yield {
                 'id': job_key,
                 'url': URLInterpreter.parse_url(url=response.url),
                 'job_key': job_key,
-                'job_title': job_details.get('title'),
+                'job_title': job_headers.get('jobTitle'),
                 'job_description_html': job_details.get('sanitizedJobDescription').get('content') if job_details.get('sanitizedJobDescription') is not None else '',
                 'posted_at': job_details.get('pubDate'),
                 'keyword': keyword,
