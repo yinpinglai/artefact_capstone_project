@@ -20,7 +20,7 @@ class PyMongoJobsDatabase:
         try:
             retrieve_unprocessed_jobs_result = self.collection.find({
                 '$or': [
-                    {'has_processed_manually': {'$exist': False}},
+                    {'has_processed_manually': {'$exists': False}},
                     {'has_processed_manually': {'$eq': False}}
                 ]
             })

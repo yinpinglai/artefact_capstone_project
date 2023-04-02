@@ -87,7 +87,7 @@ class IndeedAdvertisementsSpider(scrapy.Spider):
         offset = response.meta['offset']
         script_tag = re.findall(r'window.mosaic.providerData\["mosaic-provider-jobcards"\]=(\{.+?\});', response.text)
 
-        if script_tag is not None:
+        if script_tag is not None and len(script_tag) > 0:
             json_blob = json.loads(script_tag[0])
 
             jobs_advertisement_list = json_blob['metaData']['mosaicProviderJobCardsModel']['results']
@@ -134,7 +134,7 @@ class IndeedAdvertisementsSpider(scrapy.Spider):
                 'id': job_key,
                 'url': URLInterpreter.parse_url(url=response.url),
                 'job_key': job_key,
-                'job_title': job_details.get('jobTitle'),
+                'job_title': job_details.get('title'),
                 'job_description_html': job_details.get('sanitizedJobDescription').get('content') if job_details.get('sanitizedJobDescription') is not None else '',
                 'posted_at': job_details.get('pubDate'),
                 'keyword': keyword,
