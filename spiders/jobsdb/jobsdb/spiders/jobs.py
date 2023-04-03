@@ -1,5 +1,6 @@
 import re
 import scrapy
+import logging
 
 from scrapy.http import Request, Response
 from jobsdb.utils.json_utils import JSONUtils
@@ -57,6 +58,9 @@ class JobsDBAdvertisementsSpider(scrapy.Spider):
         for keywords in keywords_combination_list:
             search_keyword = JobsDBAdvertisementsSpider.get_search_keyword(keywords=keywords)
             search_job_url = JobsDBAdvertisementsSpider.get_search_url(keyword=search_keyword, page_num=1)
+
+            logging.info('Searching the result with keyword: {} from: {}'.format(search_keyword, search_job_url))
+
             yield scrapy.Request(
                 url = search_job_url,
                 callback = self.parse_advertisement_list,
@@ -88,6 +92,8 @@ class JobsDBAdvertisementsSpider(scrapy.Spider):
             advertisement_url = '{}/{}'.format(JobsDBAdvertisementsSpider.base_url, advertisement_url_selector.get())
 
             posted_at = job_advertisement.xpath('//time/@datetime').get()
+
+            logging.info('Retrieving the details of job advertisement record form: {}'.format(advertisement_url))
 
             yield scrapy.Request(
                 url = advertisement_url,

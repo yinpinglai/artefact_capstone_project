@@ -1,6 +1,7 @@
 import re
 import json
 import scrapy
+import logging
 
 from urllib.parse import urlencode
 from scrapy.http import Request, Response
@@ -62,6 +63,8 @@ class IndeedAdvertisementsSpider(scrapy.Spider):
             search_keyword = IndeedAdvertisementsSpider.get_search_keyword(keywords=keywords)
             search_job_url = IndeedAdvertisementsSpider.get_search_url(keyword=search_keyword, location=location)
 
+            logging.info('Searching the result with keyword: {} from: {}'.format(search_keyword, search_job_url))
+
             yield scrapy.Request(
                 url = search_job_url,
                 callback = self.parse_advertisement_list,
@@ -93,12 +96,15 @@ class IndeedAdvertisementsSpider(scrapy.Spider):
             jobs_advertisement_list = json_blob['metaData']['mosaicProviderJobCardsModel']['results']
             for index, job in enumerate(jobs_advertisement_list):
                 if job.get('jobkey') is not None:
-                    job_details_url = '{}/m/basecamp/viewjob?viewtype=embedded&jk={}'.format(
+                    advertisement_url = '{}/m/basecamp/viewjob?viewtype=embedded&jk={}'.format(
                         IndeedAdvertisementsSpider.base_url,
                         job.get('jobkey'),
                     )
+
+                    logging.info('Retrieving the details of job advertisement record form: {}'.format(advertisement_url))
+
                     yield scrapy.Request(
-                        url = job_details_url,
+                        url = advertisement_url,
                         callback = self.parse_advertisement_details,
                         meta = {
                             'keyword': keyword,
