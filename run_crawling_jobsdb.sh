@@ -5,7 +5,7 @@ cd /Users/ypinglai/Workspaces/UOEO/dissertation
 source ./venv/bin/activate
 cd spiders/jobsdb
 
-log_folder=./logs/jobsdb
+log_folder=./logs
 log_file=$(date +%Y%m%d_%H%M%S).log
 echo "The application will export log messages into $log_file"
 
