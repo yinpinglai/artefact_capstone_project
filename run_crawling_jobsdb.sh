@@ -5,4 +5,10 @@ cd /Users/ypinglai/Workspaces/UOEO/dissertation
 source ./venv/bin/activate
 cd spiders/jobsdb
 
-scrapy crawl jobsdb_advertisements
+log_folder=./logs/jobsdb
+log_file=$(date +%Y%m%d_%H%M%S).log
+echo "The application will export log messages into $log_file"
+
+mkdir -p $log_folder
+touch $log_folder/$log_file
+scrapy crawl jobsdb_advertisements --logfile $log_folder/$log_file
