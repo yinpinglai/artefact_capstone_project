@@ -6,6 +6,7 @@
 
 # useful for handling different item types with a single interface
 import pymongo
+import logging
 import datetime
 
 from itemadapter import ItemAdapter
@@ -71,6 +72,7 @@ class SaveToMongoDBPipeline:
             })
 
             if len(list(result)) > 0:
+                logging.info('Trying to update the existing record: {}'.format(item_to_be_persisted['id']))
                 self.collection.update_one(
                     {'id': item_to_be_persisted['id']},
                     {'$set': {
@@ -87,6 +89,7 @@ class SaveToMongoDBPipeline:
                     upsert=False,
                 )
             else:
+                logging.info('Trying to insert a new record: {}'.format(item_to_be_persisted['id']))
                 item_to_be_persisted['has_processed_manually'] = False
                 item_to_be_persisted['has_processed_automatically'] = False
                 item_to_be_persisted['has_deleted'] = False
