@@ -142,7 +142,7 @@ def proceed_generating_job_advertisements_records_operation():
             'id': job_advertisement['id'],
             'source': job_advertisement['source'],
             'job_title': job_advertisement['job_title'],
-            'job_description': job_advertisement['job_description_text_processed'],
+            'job_description': job_advertisement['job_description_html_processed'],
             'created_at': job_advertisement['created_at'],
         }, name=job_advertisement['id'])
         df = pandas.concat([df, job_advertisement_series_row.to_frame().T])
