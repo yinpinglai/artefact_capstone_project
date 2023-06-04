@@ -132,7 +132,7 @@ class IndeedAdvertisementsSpider(scrapy.Spider):
         job_key = response.meta['job_key']
         script_tag = re.findall(r"_initialData=(\{.+?\});", response.text)
 
-        if script_tag is not None:
+        if script_tag is not None and len(script_tag) > 0:
             json_blob = json.loads(script_tag[0])
             job_headers = json_blob["jobInfoWrapperModel"]["jobInfoModel"]["jobInfoHeaderModel"]
             job_details = json_blob["jobInfoWrapperModel"]["jobInfoModel"]
