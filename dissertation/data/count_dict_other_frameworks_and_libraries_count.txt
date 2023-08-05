@@ -1,0 +1,24 @@
+spring : 9
+ionic : 0
+flutter : 3
+scikit-learn : 0
+pandas : 0
+tensorflow : 0
+.net : 0
+qt : 0
+apache_spark : 0
+tidyverse : 0
+torch/pytorch : 0
+keras : 0
+hadoop : 0
+gtk : 0
+electron : 0
+uno_platform : 0
+numpy : 0
+capacitor : 0
+xamarin : 0
+react_native : 0
+apache_kafka : 0
+cordova : 0
+hugging_face_transformers : 0
+

@@ -1,0 +1,15 @@
+heroku : 0
+vmware : 0
+microsoft_azure : 0
+managed_hosting : 0
+firebase : 0
+aws : 12
+colocation : 0
+ibm_cloud_or_watson : 0
+ovh : 0
+oracle_cloud_infrastructure : 0
+linode : 0
+digitalocean : 0
+google_cloud : 0
+openstack : 0
+

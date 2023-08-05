@@ -1,0 +1,18 @@
+sqlite : 0
+oracle : 11
+elasticsearch : 0
+mongodb : 1
+microsoft_sql_server : 0
+dynamodb : 0
+redis : 1
+couchbase : 0
+cloud_firestore : 0
+firebase_realtime_database : 0
+mariadb : 0
+mysql : 7
+couchdb : 0
+cassandra : 0
+neo4j : 0
+ibm_db2 : 0
+postgresql : 7
+

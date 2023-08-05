@@ -1,0 +1,26 @@
+vue.js : 0
+jquery : 4
+blazor : 0
+asp.net_core : 0
+asp.net : 0
+laravel : 0
+phoenix : 0
+django : 3
+drupal : 0
+flask : 0
+next.js : 0
+symfony : 0
+fastify : 0
+angular.js : 0
+gatsby : 0
+ruby_on_rails : 0
+svelte : 0
+play_framework : 0
+react.js : 0
+express : 0
+node.js : 0
+fastapi : 0
+angular : 4
+nuxt.js : 0
+deno : 0
+
